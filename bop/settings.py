@@ -25,7 +25,7 @@ SECRET_KEY = 'jjk4q_!ebd0zf35=dv)y5135#^n145k2&i5@36+zc#b99%n)11'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['46.101.13.95', 'katelait.com']
 
 
 # Application definition
@@ -80,8 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'bopdb',
-        'USER': 'postgres',
-        'PASSWORD' : 'cs163278*cs',
+        'USER': 'bopuser',
+        'PASSWORD' : 'password',
         'HOST' : 'localhost',
         'PORT' : '5432'
     }
@@ -126,6 +126,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
